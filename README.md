@@ -147,11 +147,11 @@ author: "admin"
 
 ## Ссылки
 
-- [Официальный репозиторий TMkUp](https://github.com/TimeStop34/tmkup)
-- [Официальный репозиторий TNet](https://github.com/TimeStop34/tnet-protocols)
-- [Репозиторий расширения TMkUp v2.0 для VSCode](https://github.com/TimeStop34/vscode-tmkup-language-support)
+- [Официальный репозиторий TMkUp](https://github.com/TimeStop34/TMkUp)
+- [Официальный репозиторий TNet](https://github.com/TimeStop34/TNet-Protocols)
+- [Репозиторий расширения TMkUp v2.0 для VSCode](https://github.com/TimeStop34/VSCode-TMkUp-Language-Support)
 - [VS Code Markdown Support](https://code.visualstudio.com/docs/languages/markdown)
 
 ## Лицензия
 
-[GNU GPL v3.0](https://github.com/TimeStop34/vscode-tmkup-language-support/LICENSE)
+[GNU GPL v3.0](https://github.com/TimeStop34/VSCode-TMkUp-Language-Support/LICENSE)
