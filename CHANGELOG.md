@@ -1,9 +1,3 @@
 # Change Log
 
-All notable changes to the "kpl-language-support" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-
-- Initial release
+Добавлен новый универсальный тип иконок - голубого цвета

@@ -2,7 +2,7 @@
     "name": "tmkup",
     "displayName": "TMkUp Language",
     "description": "Syntax highlighting for TMkUp v2.0 — text markup language for TNet",
-    "version": "2.0.0",
+    "version": "2.0.0-1.2",
     "publisher": "TimeStop34",
     "engines": {
         "vscode": "^1.60.0"
@@ -17,8 +17,8 @@
                 "extensions": [".tmkup", ".tmk"],
                 "configuration": "./language-configuration.json",
                 "icon": {
-                    "light": "./icons/tmkup-small-dark.svg",
-                    "dark": "./icons/tmkup-small-light.svg"
+                    "light": "./icons/small/tmkup-small-blue.svg",
+                    "dark": "./icons/small/tmkup-small-blue.svg"
                 }
             }
         ],
@@ -30,5 +30,5 @@
             }
         ]
     },
-    "icon": "./icons/tmkup-extension.png"
+    "icon": "./icons/png/big/tmkup-blue.png"
 }
