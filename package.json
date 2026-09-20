@@ -17,8 +17,8 @@
                 "extensions": [".tmkup", ".tmk"],
                 "configuration": "./language-configuration.json",
                 "icon": {
-                    "light": "./icons/tmkup-dark.svg",
-                    "dark": "./icons/tmkup-light.svg"
+                    "light": "./icons/tmkup-small-dark.svg",
+                    "dark": "./icons/tmkup-small-light.svg"
                 }
             }
         ],
