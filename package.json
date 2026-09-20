@@ -1,0 +1,27 @@
+{
+    "name": "tmkup",
+    "displayName": "TMkUp Language",
+    "description": "Syntax highlighting for TMkUp v2.0 — text markup language for TNet",
+    "version": "2.0.0",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "categories": ["Programming Languages"],
+    "contributes": {
+        "languages": [
+            {
+                "id": "tmkup",
+                "aliases": ["TMkUp", "tmkup"],
+                "extensions": [".tmkup", ".tmk"],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "tmkup",
+                "scopeName": "source.tmkup",
+                "path": "./syntaxes/tmkup.tmLanguage.json"
+            }
+        ]
+    }
+}

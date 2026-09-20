@@ -1,0 +1,456 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "TMkUp",
+    "scopeName": "source.tmkup",
+    "fileTypes": ["tmkup", "tmk"],
+    "patterns": [
+        { "include": "#metadata" },
+        { "include": "#code-block" },
+        { "include": "#comments" },
+        { "include": "#gopher-directive" },
+        { "include": "#info-block" },
+        { "include": "#color-block" },
+        { "include": "#spoiler" },
+        { "include": "#form" },
+        { "include": "#radio" },
+        { "include": "#select" },
+        { "include": "#horizontal-rule" },
+        { "include": "#headers" },
+        { "include": "#quote" },
+        { "include": "#table" },
+        { "include": "#list" },
+        { "include": "#footnote-definition" },
+        { "include": "#footnote-ref" },
+        { "include": "#image" },
+        { "include": "#link" },
+        { "include": "#form-field" },
+        { "include": "#variables" },
+        { "include": "#inline-code" },
+        { "include": "#ansi-color" },
+        { "include": "#styles" }
+    ],
+    "repository": {
+
+        "metadata": {
+            "begin": "^(---tmk-meta)\\s*$",
+            "end": "^(---tmk-meta)\\s*$",
+            "beginCaptures": {
+                "1": { "name": "punctuation.definition.metadata.begin.tmkup" }
+            },
+            "endCaptures": {
+                "1": { "name": "punctuation.definition.metadata.end.tmkup" }
+            },
+            "name": "meta.block.metadata.tmkup",
+            "patterns": [
+                {
+                    "match": "^(\\s*)([\\w-]+)(:)\\s*(.*)$",
+                    "captures": {
+                        "2": { "name": "entity.name.tag.metadata.tmkup" },
+                        "3": { "name": "punctuation.separator.key-value.tmkup" },
+                        "4": { "name": "string.unquoted.metadata.tmkup" }
+                    }
+                }
+            ]
+        },
+
+        "comments": {
+            "patterns": [
+                {
+                    "match": "//.*$",
+                    "name": "comment.line.double-slash.tmkup"
+                },
+                {
+                    "begin": "/\\*",
+                    "end": "\\*/",
+                    "name": "comment.block.tmkup"
+                }
+            ]
+        },
+
+        "code-block": {
+            "begin": "^(\\s*)(```)(\\w*)\\s*$",
+            "end": "^(\\s*)(```)\\s*$",
+            "beginCaptures": {
+                "2": { "name": "punctuation.definition.code.begin.tmkup" },
+                "3": { "name": "fenced_code.block.language.tmkup" }
+            },
+            "endCaptures": {
+                "2": { "name": "punctuation.definition.code.end.tmkup" }
+            },
+            "name": "markup.fenced_code.block.tmkup"
+        },
+
+        "inline-code": {
+            "match": "(`)([^`\\n]+)(`)",
+            "captures": {
+                "1": { "name": "punctuation.definition.raw.begin.tmkup" },
+                "2": { "name": "markup.inline.raw.tmkup" },
+                "3": { "name": "punctuation.definition.raw.end.tmkup" }
+            }
+        },
+
+        "gopher-directive": {
+            "begin": "^(@@)(gopher-type)(\\s+.*)?$",
+            "end": "^(@@)(endgopher)\\s*$",
+            "beginCaptures": {
+                "1": { "name": "punctuation.definition.directive.begin.tmkup" },
+                "2": { "name": "keyword.control.gopher.tmkup" },
+                "3": { "name": "meta.attributes.tmkup" }
+            },
+            "endCaptures": {
+                "1": { "name": "punctuation.definition.directive.end.tmkup" },
+                "2": { "name": "keyword.control.gopher.tmkup" }
+            },
+            "name": "meta.directive.gopher.tmkup",
+            "patterns": [
+                { "include": "#link" },
+                { "include": "#image" }
+            ]
+        },
+
+        "info-block": {
+            "begin": "^(!!!)\\s*(\\{[^}]*\\})?\\s*$",
+            "end": "^(!!!)\\s*$",
+            "beginCaptures": {
+                "1": { "name": "punctuation.definition.block.begin.tmkup" },
+                "2": { "name": "meta.attributes.tmkup" }
+            },
+            "endCaptures": {
+                "1": { "name": "punctuation.definition.block.end.tmkup" }
+            },
+            "name": "markup.other.info.tmkup",
+            "patterns": [
+                { "include": "#attributes" },
+                { "include": "$self" }
+            ]
+        },
+
+        "color-block": {
+            "begin": "^(%%)\\s*(\\{[^}]*\\})?\\s*$",
+            "end": "^(%%)\\s*$",
+            "beginCaptures": {
+                "1": { "name": "punctuation.definition.block.begin.tmkup" },
+                "2": { "name": "meta.attributes.tmkup" }
+            },
+            "endCaptures": {
+                "1": { "name": "punctuation.definition.block.end.tmkup" }
+            },
+            "name": "markup.other.color.tmkup",
+            "patterns": [
+                { "include": "#attributes" },
+                { "include": "$self" }
+            ]
+        },
+
+        "spoiler": {
+            "begin": "^(\\?\\?\\?)\\s*(\\{[^}]*\\})?\\s*$",
+            "end": "^(\\?\\?\\?)\\s*$",
+            "beginCaptures": {
+                "1": { "name": "punctuation.definition.block.begin.tmkup" },
+                "2": { "name": "meta.attributes.tmkup" }
+            },
+            "endCaptures": {
+                "1": { "name": "punctuation.definition.block.end.tmkup" }
+            },
+            "name": "markup.other.spoiler.tmkup",
+            "patterns": [
+                { "include": "#attributes" },
+                { "include": "$self" }
+            ]
+        },
+
+        "form": {
+            "begin": "^(@@)\\s*(\\{[^}]*\\})\\s*$",
+            "end": "^(@@)\\s*$",
+            "beginCaptures": {
+                "1": { "name": "punctuation.definition.form.begin.tmkup" },
+                "2": { "name": "meta.attributes.tmkup" }
+            },
+            "endCaptures": {
+                "1": { "name": "punctuation.definition.form.end.tmkup" }
+            },
+            "name": "meta.form.tmkup",
+            "patterns": [
+                { "include": "#attributes" },
+                { "include": "#radio" },
+                { "include": "#select" },
+                { "include": "#form-field" },
+                { "include": "#comments" }
+            ]
+        },
+
+        "radio": {
+            "begin": "(\\[)(radio)(\\s+[^\\]]*)(\\])",
+            "end": "(\\[)(/radio)(\\])",
+            "beginCaptures": {
+                "1": { "name": "punctuation.definition.tag.begin.tmkup" },
+                "2": { "name": "keyword.control.radio.tmkup" },
+                "3": { "name": "meta.attributes.tmkup" },
+                "4": { "name": "punctuation.definition.tag.end.tmkup" }
+            },
+            "endCaptures": {
+                "1": { "name": "punctuation.definition.tag.begin.tmkup" },
+                "2": { "name": "keyword.control.radio.tmkup" },
+                "3": { "name": "punctuation.definition.tag.end.tmkup" }
+            },
+            "name": "meta.radio.tmkup",
+            "patterns": [
+                { "include": "#form-field" }
+            ]
+        },
+
+        "select": {
+            "begin": "(\\[)(select)(\\s+[^\\]]*)(\\])",
+            "end": "(\\[)(/select)(\\])",
+            "beginCaptures": {
+                "1": { "name": "punctuation.definition.tag.begin.tmkup" },
+                "2": { "name": "keyword.control.select.tmkup" },
+                "3": { "name": "meta.attributes.tmkup" },
+                "4": { "name": "punctuation.definition.tag.end.tmkup" }
+            },
+            "endCaptures": {
+                "1": { "name": "punctuation.definition.tag.begin.tmkup" },
+                "2": { "name": "keyword.control.select.tmkup" },
+                "3": { "name": "punctuation.definition.tag.end.tmkup" }
+            },
+            "name": "meta.select.tmkup",
+            "patterns": [
+                { "include": "#form-field" }
+            ]
+        },
+
+        "form-field": {
+            "begin": "(\\[)([^\\]\\n]*)(\\])\\s*(\\{)",
+            "end": "(\\})",
+            "beginCaptures": {
+                "1": { "name": "punctuation.definition.field.begin.tmkup" },
+                "2": { "name": "entity.name.label.field.tmkup" },
+                "3": { "name": "punctuation.definition.field.end.tmkup" },
+                "4": { "name": "punctuation.definition.attributes.begin.tmkup" }
+            },
+            "endCaptures": {
+                "1": { "name": "punctuation.definition.attributes.end.tmkup" }
+            },
+            "name": "meta.field.form.tmkup",
+            "patterns": [
+                { "include": "#attributes" }
+            ]
+        },
+
+        "attributes": {
+            "patterns": [
+                {
+                    "match": "([\\w-]+)(=)(\"[^\"]*\"|'[^']*')",
+                    "captures": {
+                        "1": { "name": "entity.other.attribute-name.tmkup" },
+                        "2": { "name": "punctuation.separator.key-value.tmkup" },
+                        "3": { "name": "string.quoted.tmkup" }
+                    }
+                },
+                {
+                    "match": "(?<![\\w-])(required|checked|selected|multiple)(?![\\w-])",
+                    "captures": {
+                        "1": { "name": "keyword.other.flag.tmkup" }
+                    }
+                },
+                {
+                    "match": "([\\w-]+)",
+                    "captures": {
+                        "1": { "name": "entity.other.attribute-name.tmkup" }
+                    }
+                }
+            ]
+        },
+
+        "horizontal-rule": {
+            "match": "^(?:-{3,}|\\*{3,})\\s*$",
+            "name": "meta.separator.tmkup"
+        },
+
+        "headers": {
+            "patterns": [
+                {
+                    "match": "^(#{1,6})(\\s+)(.+?)(\\s+#+)?\\s*$",
+                    "captures": {
+                        "1": { "name": "punctuation.definition.heading.tmkup" },
+                        "3": { "name": "entity.name.section.tmkup" },
+                        "4": { "name": "punctuation.definition.heading.end.tmkup" }
+                    },
+                    "name": "markup.heading.tmkup"
+                }
+            ]
+        },
+
+        "quote": {
+            "patterns": [
+                {
+                    "match": "^(\\s*)(>)\\s?(\\{[^}]*\\})?\\s*(.*)$",
+                    "captures": {
+                        "2": { "name": "punctuation.definition.quote.tmkup" },
+                        "3": { "name": "meta.attributes.tmkup" },
+                        "4": { "name": "markup.quote.tmkup" }
+                    }
+                }
+            ]
+        },
+
+        "table": {
+            "patterns": [
+                {
+                    "match": "^\\s*(\\|)(.*)(\\|)\\s*$",
+                    "captures": {
+                        "1": { "name": "punctuation.definition.table.pipe.tmkup" },
+                        "2": { "name": "markup.table.cell.tmkup" },
+                        "3": { "name": "punctuation.definition.table.pipe.tmkup" }
+                    },
+                    "name": "markup.table.row.tmkup"
+                },
+                {
+                    "match": "^\\s*\\|(?:\\s*:?-+:?\\s*\\|)+\\s*$",
+                    "name": "markup.table.separator.tmkup"
+                }
+            ]
+        },
+
+        "list": {
+            "patterns": [
+                {
+                    "match": "^(\\s*)([-*+])\\s+(\\[[ x~]\\])\\s+(.*)$",
+                    "captures": {
+                        "2": { "name": "punctuation.definition.list.begin.tmkup" },
+                        "3": { "name": "punctuation.definition.task.tmkup" },
+                        "4": { "name": "markup.list.unnumbered.item.tmkup" }
+                    },
+                    "name": "markup.list.unnumbered.tmkup"
+                },
+                {
+                    "match": "^(\\s*)([-*+])\\s+(.*)$",
+                    "captures": {
+                        "2": { "name": "punctuation.definition.list.begin.tmkup" },
+                        "3": { "name": "markup.list.unnumbered.item.tmkup" }
+                    },
+                    "name": "markup.list.unnumbered.tmkup"
+                },
+                {
+                    "match": "^(\\s*)(\\d+\\.)\\s+(.*)$",
+                    "captures": {
+                        "2": { "name": "punctuation.definition.list.begin.tmkup" },
+                        "3": { "name": "markup.list.numbered.item.tmkup" }
+                    },
+                    "name": "markup.list.numbered.tmkup"
+                },
+                {
+                    "match": "^(\\s*)(:)\\s+(.*)$",
+                    "captures": {
+                        "2": { "name": "punctuation.definition.list.definition.tmkup" },
+                        "3": { "name": "markup.list.definition.item.tmkup" }
+                    },
+                    "name": "markup.list.definition.tmkup"
+                }
+            ]
+        },
+
+        "footnote-definition": {
+            "match": "^\\s*(\\[\\^)([^\\]]+)(\\])(:)\\s*(.*)$",
+            "captures": {
+                "1": { "name": "punctuation.definition.footnote.begin.tmkup" },
+                "2": { "name": "entity.name.footnote.tmkup" },
+                "3": { "name": "punctuation.definition.footnote.end.tmkup" },
+                "4": { "name": "punctuation.separator.key-value.tmkup" },
+                "5": { "name": "markup.footnote.body.tmkup" }
+            }
+        },
+
+        "footnote-ref": {
+            "match": "(\\[\\^)([^\\]]+)(\\])",
+            "captures": {
+                "1": { "name": "punctuation.definition.footnote.begin.tmkup" },
+                "2": { "name": "entity.name.footnote.tmkup" },
+                "3": { "name": "punctuation.definition.footnote.end.tmkup" }
+            }
+        },
+
+        "image": {
+            "match": "(!\\[)([^\\]]*)(\\]\\()([^)\\s]+)(?:\\s+(\\{[^}]*\\}))?(\\))",
+            "captures": {
+                "1": { "name": "punctuation.definition.image.begin.tmkup" },
+                "2": { "name": "string.other.image.alt.tmkup" },
+                "3": { "name": "punctuation.definition.image.link.tmkup" },
+                "4": { "name": "markup.underline.link.image.tmkup" },
+                "5": { "name": "meta.attributes.tmkup" },
+                "6": { "name": "punctuation.definition.image.end.tmkup" }
+            },
+            "name": "meta.image.tmkup"
+        },
+
+        "link": {
+            "match": "(\\[)([^\\]\\n]+)(\\]\\()([^)\\s]+)(?:\\s+(\"[^\"]*\"))?(\\))",
+            "captures": {
+                "1": { "name": "punctuation.definition.link.begin.tmkup" },
+                "2": { "name": "string.other.link.title.tmkup" },
+                "3": { "name": "punctuation.definition.link.mid.tmkup" },
+                "4": { "name": "markup.underline.link.tmkup" },
+                "5": { "name": "string.other.link.description.tmkup" },
+                "6": { "name": "punctuation.definition.link.end.tmkup" }
+            },
+            "name": "meta.link.tmkup"
+        },
+
+        "variables": {
+            "match": "(\\{\\{)([^}]*)(\\}\\})",
+            "captures": {
+                "1": { "name": "punctuation.definition.variable.begin.tmkup" },
+                "2": { "name": "variable.other.tmkup" },
+                "3": { "name": "punctuation.definition.variable.end.tmkup" }
+            }
+        },
+
+        "ansi-color": {
+            "patterns": [
+                {
+                    "match": "\\{(/)\\}|\\{(/)((?:bg-)?b?(?:red|green|blue|yellow|magenta|cyan|white|black))\\}|\\{((?:bg-)?b?(?:red|green|blue|yellow|magenta|cyan|white|black))\\}",
+                    "captures": {
+                        "1": { "name": "punctuation.definition.color.reset.tmkup" },
+                        "2": { "name": "punctuation.definition.color.close.tmkup" },
+                        "3": { "name": "support.constant.color.tmkup" },
+                        "4": { "name": "support.constant.color.tmkup" }
+                    },
+                    "name": "meta.color.tmkup"
+                }
+            ]
+        },
+
+        "styles": {
+            "patterns": [
+                {
+                    "match": "(\\*\\*\\*)([^*\\n]+?)(\\*\\*\\*)",
+                    "name": "markup.bold.italic.tmkup"
+                },
+                {
+                    "match": "(\\*\\*)([^*\\n]+?)(\\*\\*)",
+                    "name": "markup.bold.tmkup"
+                },
+                {
+                    "match": "(\\*)([^*\\n]+?)(\\*)",
+                    "name": "markup.italic.tmkup"
+                },
+                {
+                    "match": "(~~)([^~\\n]+?)(~~)",
+                    "name": "markup.strikethrough.tmkup"
+                },
+                {
+                    "match": "(==)([^=\\n]+?)(==)",
+                    "name": "markup.highlight.tmkup"
+                },
+                {
+                    "match": "(\\^)([^\\^\\s][^\\^\\n]*?)(\\^)",
+                    "name": "markup.superscript.tmkup"
+                },
+                {
+                    "match": "(~)([^~\\n]+?)(~)",
+                    "name": "markup.subscript.tmkup"
+                }
+            ]
+        }
+    }
+}

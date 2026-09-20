@@ -1,0 +1,90 @@
+{
+    "comments": {
+        "lineComment": "//",
+        "blockComment": [ "/*", "*/" ]
+    },
+
+    "brackets": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        ["```", "```"],
+        ["!!!", "!!!"],
+        ["%%", "%%"],
+        ["???", "???"],
+        ["@@", "@@"],
+        ["---tmk-meta", "---tmk-meta"],
+        ["[radio", "[/radio]"],
+        ["[select", "[/select]"],
+        ["@@gopher-type", "@@endgopher"]
+    ],
+
+    "autoClosingPairs": [
+        { "open": "{", "close": "}", "notIn": ["string", "comment"] },
+        { "open": "[", "close": "]", "notIn": ["string", "comment"] },
+        { "open": "(", "close": ")", "notIn": ["string", "comment"] },
+        { "open": "`", "close": "`", "notIn": ["string"] },
+        { "open": "\"", "close": "\"", "notIn": ["string"] },
+        { "open": "*", "close": "*", "notIn": ["string", "comment"] },
+        { "open": "**", "close": "**", "notIn": ["string", "comment"] },
+        { "open": "_", "close": "_", "notIn": ["string", "comment"] },
+        { "open": "~~", "close": "~~", "notIn": ["string", "comment"] },
+        { "open": "==", "close": "==", "notIn": ["string", "comment"] }
+    ],
+
+    "surroundingPairs": [
+        ["{red}", "{/red}"],
+        ["{green}", "{/green}"],
+        ["{blue}", "{/blue}"],
+        ["{yellow}", "{/yellow}"],
+        ["{magenta}", "{/magenta}"],
+        ["{cyan}", "{/cyan}"],
+        ["{white}", "{/white}"],
+        ["{black}", "{/black}"],
+        ["{bg-red}", "{/bg-red}"],
+        ["{bg-green}", "{/bg-green}"],
+        ["{bg-blue}", "{/bg-blue}"],
+        ["{bg-yellow}", "{/bg-yellow}"],
+        ["{bg-magenta}", "{/bg-magenta}"],
+        ["{bg-cyan}", "{/bg-cyan}"],
+        ["{bg-white}", "{/bg-white}"],
+        ["{bg-black}", "{/bg-black}"],
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        ["`", "`"],
+        ["\"", "\""],
+        ["*", "*"],
+        ["**", "**"],
+        ["_", "_"],
+        ["~~", "~~"],
+        ["==", "=="],
+        ["^", "^"],
+        ["~", "~"],
+        ["!!!", "!!!"],
+        ["%%", "%%"],
+        ["???", "???"],
+        ["@@", "@@"],
+        ["```", "```"],
+        ["---tmk-meta", "---tmk-meta"],
+        ["[radio", "[/radio]"],
+        ["[select", "[/select]"],
+        ["@@gopher-type", "@@endgopher"]
+    ],
+
+    "autoCloseBefore": ";:.,=}])>` \n\t*~_",
+
+    "wordPattern": "[\\p{L}_][\\p{L}\\p{N}_-]*",
+
+    "folding": {
+        "markers": {
+            "start": "^\\s*(?:!!!|%%|\\?\\?\\?|@@|\\[radio|\\[select|@@gopher-type|```|---tmk-meta)\\b",
+            "end": "^\\s*(?:!!!|%%|\\?\\?\\?|@@|\\[/radio|\\[/select|@@endgopher|```|---tmk-meta)\\s*$"
+        }
+    },
+
+    "indentationRules": {
+        "increaseIndentPattern": "^\\s*(?:!!!|%%|\\?\\?\\?|@@(?!gopher-type|endgopher)|\\[radio|\\[select|---tmk-meta|```)\\b.*$",
+        "decreaseIndentPattern": "^\\s*(?:!!!|%%|\\?\\?\\?|@@|\\[/radio|\\[/select|@@endgopher|---tmk-meta|```)\\s*$"
+    }
+}
