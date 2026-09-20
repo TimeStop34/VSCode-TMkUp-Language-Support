@@ -15,7 +15,11 @@
                 "id": "tmkup",
                 "aliases": ["TMkUp", "tmkup"],
                 "extensions": [".tmkup", ".tmk"],
-                "configuration": "./language-configuration.json"
+                "configuration": "./language-configuration.json",
+                "icon": {
+                    "light": "./icons/tmkup-dark.svg",
+                    "dark": "./icons/tmkup-light.svg"
+                }
             }
         ],
         "grammars": [
@@ -25,5 +29,6 @@
                 "path": "./syntaxes/tmkup.tmLanguage.json"
             }
         ]
-    }
+    },
+    "icon": "./icons/tmkup-extension.png"
 }
