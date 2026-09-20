@@ -7,6 +7,8 @@
     "engines": {
         "vscode": "^1.60.0"
     },
+    "license": "GPL-3.0-only",
+    "author": { "name": "TimeStop34", "email": "timestop34wk@gmail.com"},
     "categories": ["Programming Languages"],
     "repository": {"url": "https://github.com/TimeStop34/VSCode-TMkUp-Language-Support"},
     "contributes": {
