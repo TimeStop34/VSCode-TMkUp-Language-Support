@@ -3,6 +3,7 @@
     "displayName": "TMkUp Language",
     "description": "Syntax highlighting for TMkUp v2.0 — text markup language for TNet",
     "version": "2.0.0",
+    "publisher": "TimeStop34",
     "engines": {
         "vscode": "^1.60.0"
     },
