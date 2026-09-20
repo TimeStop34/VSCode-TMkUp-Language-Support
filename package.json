@@ -7,6 +7,7 @@
         "vscode": "^1.60.0"
     },
     "categories": ["Programming Languages"],
+    "repository": {"url": "https://github.com/TimeStop34/VSCode-TMkUp-Language-Support"},
     "contributes": {
         "languages": [
             {

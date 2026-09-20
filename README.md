@@ -154,4 +154,4 @@ author: "admin"
 
 ## Лицензия
 
-[GNU GPL v3.0](https://github.com/TimeStop34/VSCode-TMkUp-Language-Support/blob/main/LICENSE)
+[GNU GPL v3.0](LICENSE)
